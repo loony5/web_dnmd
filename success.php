@@ -1,5 +1,5 @@
 <?php
-    include "../dnmd/include/connect.php";
+    include "include/connect.php";
     /*echo "<pre>";
     echo var_dump($_POST);*/
 
@@ -24,7 +24,7 @@
     <?php } else {
 
     //아이디 중복검사.
-    $sql = "SELECT * FROM member WHERE memberId = '{$memberId}'";
+    $sql = "SELECT * FROM member WHERE memberId = '$memberId'";
     $res = $connect->query($sql);
     if($res->num_rows >= 1){
         echo '이미 존재하는 아이디가 있습니다.';
@@ -49,14 +49,17 @@
     }
 
     //이제부터 넣기 시작
-    $sql = "INSERT INTO member VALUES('','{$memberId}','{$memberName}','{$memberPw}','{$memberEmail}','{$memberPhone}');";
-
+    $sql = "INSERT INTO member VALUES(NULL,'$memberId','$memberName','$memberPw','$memberEmail','$memberPhone')";
 
     if($connect->query($sql)){
 
       print "<script language=javascript> alert('가입이 완료되었습니다.'); location.href='login.php'; </script>";
        // echo '<script>alert('가입이 완료되었습니다.);location.replace('../dnmd/login.php');</script>';
 
+    } else {
+
+      print "<script language=javascript> alert('fail')</script>";
+      echo mysqli_connect_errno();
     }
   }
 

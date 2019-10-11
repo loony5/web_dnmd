@@ -23,7 +23,7 @@
   <h1><div style="text-align:center">D.NMD</div></h1>
   <h4><div style="text-align:center">회원가입</div></h4>
 
-  <form name="form name" action="../dnmd/success.php" method="post" onsubmit="return checkSubmit()">
+  <form name="form name" action="success.php" method="post" onsubmit="return checkSubmit()">
     <table>
 
       <tr>

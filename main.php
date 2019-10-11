@@ -81,80 +81,137 @@
 
 <html>
   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <title>
-        D.NMD
-      </title>
-      <!-- Bootstrap core CSS -->
-      <link href="./css/bootstrap.min.css" rel="stylesheet">
-
-      <!-- Custom styles for this template -->
-      <link href="./css/shop-homepage.css" rel="stylesheet">
-      <style type="text/css">
-      <!--
-        A:link {text-decoration:none; color:black;}
-        A:visited {text-decoration:none; color:black;}
-        A:hover {text-decoration:none; color:red;}
-      -->
-      ul{list-style: none; display: table; padding: 0;}
-      li {float: left; margin-right: 5px; margin-left: 5px;}
-
-
-      </style>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width", initial-scale="1">
+      <title>D.NMD</title>
+      <link rel="stylesheet" href="css/bootstrap.css">
   </head>
 
   <body>
 
-    <h1><div style="text-align:center"><strong>D.NMD</strong></div></h1>
-    <p>
-      <div style="text-align:center">"아날로그적 지식과 경험을 공유하다"</div>
-    </p>
-    <p>
-      <div style="text-align:center">디노마드학교는 디자인 및 문화예술 분야의 지식과 경험을 공유하는 장입니다. </br>
-      이를 통해 학교와 직장의 울타리를 벗어난 창조적 커뮤니케이션을 지향합니다.</div>
-    </p>
+    <style type="text/css">
+    .navbar-text {
 
-    <!-- <a href="login.php">
-      <div style="text-align:right">로그인/회원가입</div></a>
-    <a href="join.php">문의하기</a></br> -->
+      padding: 0 0 0 15px;
+    }
 
-  </table>
+    </style>
+
+
+    <!-- 상단 네비게이션바 시작 -->
+    <nav class="navbar navbar-default">
+      
+      <!-- 모바일 사이즈로 브라우저 너비가 좁아질 경우, 메뉴로 보여짐 -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="main.php">D.NMD</a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!-- 일반 브러우저 사이즈일때, 보여짐 -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <!-- 로그인하지 않았을때, -->
+          <?php
+            if(!isset($_SESSION['ses_userid'])) { ?>
+              <li><a href="login.php">로그인</a></li>
+              <li><a href="join.php">회원가입</a></li>
+              <li><a href="write.php">1:1문의하기</a></li>
+
+              <!-- 로그인 했을때, -->
+            <?php } else {
+
+              $ses_userid=$_SESSION['ses_userid'];
+
+              $name_sql="SELECT *FROM member WHERE memberId='$ses_userid'";
+              $name_res=$connect->query($name_sql);
+              $name_row=$name_res->fetch_assoc();
+              $name = $name_row['name'];
+
+              // 관리자가 로그인 했을때,
+              if($_SESSION['ses_userid'] == 'admin') { ?>
+
+                <p class="navbar-text">
+                <?php echo "<strong>$name</strong> 님"?>
+                </p>
+                <li><a href="logout.php">로그아웃</a></li>
+                <li><a href="admin.php">관리페이지</a></li>
+
+                <!-- 일반 사용자가 로그인 했을때, -->
+              <?php } else { ?>
+
+                <p class="navbar-text">
+                <?php echo "<strong>$name</strong> 님"?>
+                </p>
+                <li><a href="logout.php">로그아웃</a></li>
+                <li><a href="write.php">1:1문의하기</a></li>
+                <li><a href="my.php">나의 디노마드</a></li>
+
+              <?php } 
+
+             } ?>
+
+        </ul>
+      </div>
+    </nav>
+
+
+    <div class="container">
+    
+      <!-- 메인 소개글 -->
+      <div class="jumbotron">
+        <h1 class="text-center">D.NMD</h1>
+        <p class="text-center"><br>
+        "아날로그적 지식과 경험을 공유하다"<br></p>
+        <p class="text-center">
+        디노마드학교는 디자인 및 문화예술 분야의 지식과 경험을 공유하는 장입니다.</br>
+        이를 통해 학교와 직장의 울타리를 벗어난 창조적 커뮤니케이션을 지향합니다.
+        </p>
+      </div>
+
+      <!-- 본문 진행중인 수업 보여주기 -->
+      <div class="row">
+
+        <!-- 데이터베이스에 저장된 수업 가져오기 -->
+        <?php 
+        
+        while($row=$result->fetch_assoc()) {
+
+        $classNo = $row['no'];
+        $query = "select count(*) as cnt from payment_list where num = '$classNo'";
+        $res = $connect->query($query);
+        $ro = $res->fetch_assoc();
+
+        $peoples = $row['peoples'];
+        $cnt_p = $ro['cnt'];
+
+        $remainder = $peoples-$cnt_p;
+
+        ?>
+
+        <!-- 가져온 수업 보여주기 -->
+        <div class="col-sm-6 col-md-4">
+          <a href="detail.php?no=<?php echo $row['no'] ?>" class="thumbnail">
+            <img src="images/<?=$row['image']?>" alt="" method="get">
+            <div class="caption">
+              <h3><?php echo $row['title']?></h3>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <?php } ?>
+        
+    </div>
+
 
   <!-- Page Content -->
   <div class="container">
-
-    <div class="row">
-      <?php
-        if(!isset($_SESSION['ses_userid'])){
-          echo "<p>로그인을 해주세요.<a href=\"login.php\"> [로그인/회원가입]</a><a href=\"write.php\"> [1:1 문의하기]</a></p>";
-        } else {
-
-          if($_SESSION['ses_userid'] == 'admin'){
-
-            $ses_userid=$_SESSION['ses_userid'];
-
-            echo "<p><strong>관리자</strong> 님 로그인되었습니다.";
-            echo "<a href=\"logout.php\">[로그아웃]</a><a href=\"admin.php\"> [관리페이지]</a>";
-
-          } else {
-          $ses_userid=$_SESSION['ses_userid'];
-
-          $name_sql = "select *from member where memberId = '$ses_userid'";
-          $name_res = $connect -> query($name_sql);
-          $name_row = $name_res -> fetch_assoc();
-
-          $name = $name_row['name'];
-
-          echo "<p><strong>$name</strong> 님 환영합니다.";
-          echo "<a href=\"logout.php\">[로그아웃]</a><a href=\"write.php\"> [1:1 문의하기]</a>";
-          echo "<a href=\"my.php\"> [나의 디노마드]</a></p>";
-        } }
-       ?>
-       </br>
-       </br>
 
         <div class="row">
 
@@ -193,9 +250,6 @@
         </div>
         <!-- /.row -->
 
-    </div>
-    <!-- /.row -->
-
   </div>
   <!-- /.container -->
 
@@ -212,8 +266,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="./js/jquery.min.js"></script>
-  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
 
 
   </body>

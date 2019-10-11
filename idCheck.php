@@ -1,10 +1,10 @@
 <?php
 
-    include "../dnmd/include/connect.php";
+    include "include/connect.php";
 
     $memberId = $_POST['memberId'];
 
-    $sql = "SELECT * FROM member WHERE memberId = '{$memberId}'";
+    $sql = "SELECT * FROM member WHERE memberId = '$memberId'";
 
     $res = $connect->query($sql);
 

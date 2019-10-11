@@ -1,5 +1,5 @@
 <?php
-  include '../dnmd/include/connect.php';
+  include 'include/connect.php';
 
   $title = $_POST['title'];
   $teacher = $_POST['teacher'];

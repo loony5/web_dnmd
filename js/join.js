@@ -20,7 +20,7 @@ $(function(){
         $.ajax({
             type: 'post',
             dataType: 'json',
-            url: '../dnmd/idCheck.php',
+            url: 'idCheck.php',
             data: {memberId: memberId.val()},
 
             success: function (json) {
