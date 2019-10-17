@@ -203,9 +203,10 @@
             </div>
           </a>
         </div>
-      </div>
 
       <?php } ?>
+
+      </div>
         
     </div>
 

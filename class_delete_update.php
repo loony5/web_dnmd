@@ -1,35 +1,47 @@
-<?
+<?php
 //데이터 베이스 연결하기
+  session_start();
   include "../dnmd/include/connect.php";
 
-  session_start();
+  if($_SESSION['ses_userid'] != 'admin'){
+
+    ?>
+    
+    <script>
+     alert("권한이 없습니다.");
+     location.replace("<?php echo "main.php"?>");
+   </script>
+
+   <?php
+
+ }
 
   $no = $_GET['no'];
 
-  // $no = $_POST['no'];
-  // $password = $_POST['password'];
-  // $pw = md5($password);
-  // $ses_userid=$_SESSION['ses_userid'];
-  //
-  // $sql = "select *from class where no='$no'";
-  // $result = $connect->query($sql);
-  // $row = $result->fetch_assoc();
-  //
-  //
-  // $query = "select *from member where memberId='$ses_userid'";
-  // $res = $connect->query($query);
-  // $rows = $res->fetch_assoc();
+  $sql = "SELECT *FROM class WHERE no='$no'";
+  $row = mysqli_fetch_assoc($connect->query($sql));
+  
+    if($row) {
 
+      unlink("images/".$row['image']);
 
-  // if ($pw==$rows['password'] )//비밀번호 맞는지 확인함.
-  // {
+      $sql = "DELETE FROM class WHERE no='$no'";
+      $connect->query($sql);
 
-      $sq = "delete from class where no='$no'"; //데이터 삭제하는 쿼리문
-      unlink("images/".$row[image]);
-      $re = $connect->query($sq);
-
-  ?>
+      ?>
       <script>
         alert("<?php echo "수업이 삭제되었습니다."?>");
-        location.replace("<?php echo '../dnmd/admin.php'?>");
+        location.replace("<?php echo "../dnmd/admin.php"?>");
       </script>
+
+    <?php } else {
+
+      ?>
+      <script>
+        alert("수업 삭제에 실패했습니다.");
+        history.go(-1);
+      </script>
+    <?php }
+
+    ?>
+

@@ -223,7 +223,7 @@
                           onclick="location.href='./class_modify.php?no=<?php echo $row['no']?>'">
 
                           <input type="button" name="delete_btn" value="삭제"
-                          onclick="location.href='./class_delete_update.php?no=<?php echo $row['no']?>'"></td>
+                          onclick="location.href='./delete_check.php?no=<?php echo $row['no']?>'"></td>
 
                       </tr>
 
