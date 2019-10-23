@@ -1,8 +1,8 @@
 $(function(){
 
     //아이디 중복 확인 소스
-    var memberIdCheck = $('.memberIdCheck');
-    var memberId = $('.memberId');
+    var memberIdCheck = document.getElementById('memberIdCheck');
+    var memberId = document.getElementById('memberId').value;
     var memberPw = $('.memberPw');
     var memberPw2 = $('.memberPw2');
     var memberPw2Comment = $('.memberPw2Comment');

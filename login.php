@@ -5,60 +5,64 @@
 <html>
   <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width", initial-scale="1">
     <title>D.NMD</title>
-    <style type="text/css">
-    table {margin: auto;}
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/signin.css">
+
+    <style>
+      body {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
     </style>
   </head>
 
   <body>
-    <h1><div style="text-align:center">D.NMD</div></h1>
-    <h4><div style="text-align:center">로그인</div></h4>
-    <?php if(!isset($_SESSION['ses_userid'])) { ?>
-      <form method="post" action="login_success.php">
-        <table>
-          <tr>
-            <td>아이디</td>
-            <td><input type="text" name="memberId" class="memberId"
-              value="<?php if(isset($_COOKIE['member_login'])) {echo $_COOKIE["member_login"];} ?>"/></td>
-          </tr>
-          <tr>
-            <td>비밀번호</td>
-            <td><input type="password" name="memberPw" class="memberPw"/></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><input type="checkbox" name="idSaveCheck" <?php if(isset($_COOKIE["member_login"])){ ?> checked <?php } ?>/>아이디 기억하기</td>
-          </tr>
-            <td></td>
-            <td><input type="submit" value="로그인"/>
-            <input type="button" name="join" value="회원가입" onclick="location.href='join.php';"></td>
-        </table>
+
+  <!-- 세션에 아이디가 없을 때, -->
+  <?php if(!isset($_SESSION['ses_userid'])) { ?>
+    <div class="container">
+
+      <form class="form-signin" method="post" action="login_success.php">
+        <h2 class="form-signin-heading">D.NMD</h2>
+
+        <input type="text" name="memberId" class="form-control" placeholder="아이디" required autofocus
+        value="<?php if(isset($_COOKIE['member_login'])) { echo $_COOKIE['member_login']; } ?>">
+        
+        <input type="password" name="memberPw" class="form-control" placeholder="비밀번호" required>
+        
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="idSaveCheck"
+            <?php if(isset($_COOKIE['member_login'])) { ?> checked <?php } ?>> 아이디 기억하기
+          </label>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+        <button class="btn btn-lg btn-info btn-block" type="button" onclick="location.href='join.php'">회원가입</button>
       </form>
-    <?php } else {
-      $ses_userid=$_SESSION['ses_userid'];
-      echo "<p><strong>$ses_userid</strong> 님은 이미 로그인하고 있습니다.";
-      echo "<a href=\"main.php\">[돌아가기]</a>";
-      echo "<a href=\"logout.php\">[로그아웃]</a></p>";
-    } ?>
+
+    </div>
+
+    <!-- 이미 로그인한 세션 아이디가 있을 때, -->
+  <?php } else {
+
+    $ses_userid = $_SESSION['ses_userid'];
+
+    ?>
+
+    <div class="container">
+      <h2 class="form-signin-heading text-center"><?php echo "$ses_userid"; ?> 님은 이미 로그인되어 있습니다.</h2>
+
+      <form class="form-signin">
+        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="location.href='main.php'">돌아가기</button>
+        <button class="btn btn-lg btn-info btn-block" type="button" onclick="location.href='logout.php'">로그아웃</button>
+      </form>
+    </div>
 
 
-    <!-- <form name="login" action="main.php" method="post" onsubmit="return checkSubmit()">
-      <table>
-        <tr>
-          <td>아이디</td>
-          <td><input type="text" name="memberId" value="" placeholder="id" class="memberId"/></td>
-        </tr>
-        <tr>
-          <td>비밀번호</td>
-          <td><input type="password" name="memberPw" placeholder="password" class="memberPw"/></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><input type="submit" name="login" value="로그인" class="submit"/>
-          <input type="button" name="join" value="회원가입" onclick="location.href='join.php';"></td>
-        </tr>
-    </table>
-    </form> -->
+  <?php } ?>
+
   </body>
 </html>

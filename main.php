@@ -12,7 +12,7 @@
     $page = 1;
   }
 
-  $sql = 'select count(*) as cnt from class order by no desc';
+  $sql = 'SELECT COUNT(*) as cnt FROM class ORDER BY NO DESC';
   $result = $connect->query($sql);
   $row = $result->fetch_assoc();
 
@@ -35,35 +35,35 @@
 
   }
 
-  $oneSection = 5;
-  $currentSection = ceil($page / $oneSection);
-  $allSection = ceil($allPage / $oneSection);
-  $firstPage = ($currentSection * $oneSection) - ($oneSection - 1);
+  $oneBlock = 5;
+  $currentBlock = ceil($page / $oneBlock);
+  $allBlock = ceil($allPage / $oneBlock);
+  $firstPage = ($currentBlock * $oneBlock) - ($oneBlock - 1);
 
-  if($currentSection == $allSection) {
+  if($currentBlock == $allBlock) {
 
     $lastPage = $allPage;
 
   } else {
 
-    $lastPage = $currentSection * $oneSection;
+    $lastPage = $currentBlock * $oneBlock;
 
   }
 
-  $prevPage = (($currentSection - 1) * $oneSection);
-  $nextPage = (($currentSection + 1) * $oneSection) - ($oneSection - 1);
+  $prevPage = (($currentBlock - 1) * $oneBlock);
+  $nextPage = (($currentBlock + 1) * $oneBlock) - ($oneBlock - 1);
 
-  $paging = '<ul>';
+  $paging = '<ul class="pagination">';
 
   for($i = $firstPage; $i <= $lastPage; $i++) {
 
     if($i == $page) {
 
-      $paging .= '<li class="page current">' . $i . '</li>';
+      $paging .= '<li class="active"><span>' . $i . '<span class="sr-only">(current)</span></span></li>';
 
     } else {
 
-      $paging .= '<li class="page"><a href="./main.php?page=' . $i . '">' . $i . '</a></li>';
+      $paging .= '<li><a href="./main.php?page=' . $i . '">' . $i . '</a></li>';
 
     }
 
@@ -199,7 +199,9 @@
           <a href="detail.php?no=<?php echo $row['no'] ?>" class="thumbnail">
             <img src="images/<?=$row['image']?>" alt="" method="get">
             <div class="caption">
-              <h3><?php echo $row['title']?></h3>
+              <h3>
+                <?php if($remainder<=2 && $remainder !=0) { echo $row['title']; ?>
+                <span style="color:red">-마감임박</span><?php } else { echo $row['title']; } ?></h3>
             </div>
           </a>
         </div>
@@ -211,62 +213,17 @@
     </div>
 
 
-  <!-- Page Content -->
-  <div class="container">
-
-        <div class="row">
-
-        <?php
-        // $sql = 'select *from class order by no desc';
-        // $result = $connect -> query($sql);
-
-        while($row = $result->fetch_assoc()){
-
-          $classNo = $row['no'];
-          $query = "select count(*) as cnt from payment_list where num = '$classNo'";
-          $res = $connect->query($query);
-          $ro = $res->fetch_assoc();
-
-          $peoples = $row['peoples'];
-          $cnt_p = $ro['cnt'];
-
-          $remainder = $peoples-$cnt_p;
-
-           ?>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="detail.php?no=<?php echo $row['no']?>"><img class="card-img-top"
-              src="images/<?=$row['image']?>" alt="" method="get"></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="detail.php?no=<?php echo $row['no']?>"><?php if($remainder<=2 && $remainder!=0){ echo $row['title']; ?> <span style="color:red">-마감임박</span> <?php
-                  } else {echo $row['title'];} ?></a>
-                </h4>
-              </div>
-            </div>
-          </div>
-        <?php } ?>
-
-        </div>
-        <!-- /.row -->
-
-  </div>
-  <!-- /.container -->
-
-  <div class = "paging" align=center>
+  <div class="text-center">
   <?php echo $paging ?>
   </div>
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">모든 컨텐츠의 저작권은 디노마드(www.dnomade.com) & 소속 작가에 있습니다.</p>
+  <div class="container">
+    <div class="panel panel-body text-center">모든 컨텐츠의 저작권은
+      <a href="https://www.dnomade.com">디노마드(www.dnomade.com) </a>
+      & 소속 작가에 있습니다.
     </div>
-    <!-- /.container -->
-  </footer>
+  </div>
 
-  <!-- Bootstrap core JavaScript -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.js"></script>
 
