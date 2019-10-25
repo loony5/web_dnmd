@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
   session_start();
-  include "../dnmd/include/connect.php";
+  include "include/connect.php";
   if(!isset($_SESSION['ses_userid']) || $_SESSION['ses_userid'] != 'admin'){
 
     ?>
@@ -16,78 +16,98 @@
     <head>
       <meta charset="utf-8">
       <title>D.NMD</title>
-      <link rel="stylesheet" href="./css/normalize.css" />
-      <link rel="stylesheet" href="./css/register.css?a"/>
-
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/signin.css">
     </head>
 
     <body>
-      <h1><div style="text-align:center">D.NMD</div></h1>
-      <h4><div style="text-align:center">수업등록</div></h4>
 
-      <div id="register">
-        <form action="./register_update.php" method="post" enctype="multipart/form-data">
-          <input type="hidden" name="size" value="1000000">
-          <table id="register" align=center>
+      <div class="container">
+        <div class="row">
 
-            <tbody>
-
-              <tr>
-                <th scope="row"><label for="title">수업명</label></th>
-                <td class="title"><input type="text" name="title" id="title"></td>
-              </tr>
-
-              <tr>
-                <th scope="row"><label for="teacher">강사</label></th>
-                <td class="teacher"><input type="text" name="teacher" id="teacher"></td>
-              </tr>
-
-              <tr>
-                <th scope="row"><label for="date">일자</label></th>
-                <td class="date"><input type="text" name="date" id="date"></td>
-              </tr>
-
-              <tr>
-                <th scope="row"><label for="time">시간</label></th>
-                <td class="time"><input type="text" name="time" id="time"></td>
-              </tr>
-
-              <tr>
-                <th scope="row"><label for="place">장소</label></th>
-                <td class="place"><input type="text" name="place" id="place"></td>
-              </tr>
-
-              <tr>
-                <th scope="row"><label for="peoples">인원</label></th>
-                <td class="peoples">0 - <input type="text" name="peoples" id="peoples"> 명</td>
-              </tr>
-
-              <tr>
-                <th scope="row"><label for="charge">비용</label></th>
-                <td class="charge"><input type="text" name="charge" id="charge"> 원</td>
-              </tr>
-
-              <tr>
-                <th scope="row"><label for="content">수업내용</label></th>
-                <td class="content"><textarea name="content" id="content"></textarea></td>
-              </tr>
-
-              <tr>
-                <th scope="row"><label for="image">이미지</label></th>
-                <td class="image"><input type="file" name="image" id="image"></td>
-              </tr>
-
-            </tbody>
-
-          </table>
-
-          <div class="btnSet">
-            <button type="submit" class="btnSubmit btn">등록</button>
-            <button type="button" class="view_btn1" onclick="location.href='./main.php'">메인으로</button>
+          <div class="col-lg-2">
           </div>
 
-        </form>
+          <div class="col-lg-7 text-center" style="margin-left:5px">
+            <form class="form-horizontal" action="register_update.php" method="post" enctype="multipart/form-data">
+              
+              <input type="hidden" name="size" value="1000000">
+              
+              <div class="form-group">
+                <label for="title" class="col-lg-2 control-label">수업명</label>
+                <div class="col-lg-10">
+                  <input id="title" class="form-control" type="text" name="title">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="teacher" class="col-lg-2 control-label">강사</label>
+                <div class="col-lg-10">
+                  <input id="teacher" class="form-control" type="text" name="teacher">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="date" class="col-lg-2 control-label">일자</label>
+                <div class="col-lg-10">
+                  <input id="date" class="form-control" type="text" name="date">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="time" class="col-lg-2 control-label">시간</label>
+                <div class="col-lg-10">
+                  <input id="time" class="form-control" type="text" name="time">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="place" class="col-lg-2 control-label">장소</label>
+                <div class="col-lg-10">
+                  <input id="place" class="form-control" type="text" name="place">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="peoples" class="col-lg-2 control-label">인원</label>
+                <div class="col-lg-10">
+                  <input id="peoples" class="form-control" type="text" name="peoples">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="charge" class="col-lg-2 control-label">비용</label>
+                <div class="col-lg-10">
+                  <input id="charge" class="form-control" type="text" name="charge">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="content" class="col-lg-2 control-label">수업내용</label>
+                <div class="col-lg-10">
+                  <textarea id="content" class="form-control" rows="15" name="content"></textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="image" class="col-lg-2 control-label">이미지</label>
+                <div class="col-lg-10">
+                  <input id="image" type="file" name="image"">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="btn" class="col-lg-2 control-label"></label>
+                <div class="col-lg-10">
+                <button class="btn btn-lg btn-info" type="submit" style="width: 100%;margin-top:30px">등록</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
       </div>
+
     </body>
 
   </html>

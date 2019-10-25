@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
   session_start();
-  include '../dnmd/include/connect.php';
+  include 'include/connect.php';
 
 
   // paging start

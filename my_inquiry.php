@@ -2,14 +2,14 @@
 <!DOCTYPE html>
 <?php
   session_start();
-  include "../dnmd/include/connect.php";
+  include "include/connect.php";
 
   if(!isset($_SESSION['ses_userid'])){
 
      ?>
      <script>
       alert("로그인이 필요합니다.");
-      location.replace("<?php echo "./login.php"?>");
+      location.replace("<?php echo "login.php"?>");
     </script>
     <?php
   } ?>
@@ -34,8 +34,6 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/normalize.css"/>
-  <link rel="stylesheet" href="./css/board.css"/>
 
   <style>
   body{width: 70%; margin: auto;}
