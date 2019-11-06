@@ -112,7 +112,7 @@
 </head>
 <body>
 
-  <?php include 'top_view.php'?>
+  <?php include 'view/top_view.php'?>
 
   <div class="container">
     <h2 class="text-center" style="margin-top:30px; margin-bottom:50px">관리페이지</h2>
@@ -196,7 +196,7 @@
     <div class="col-md-4"></div>
 
     <div class="col-md-4" style="margin-top:20px; margin-bottom:20px">
-        <a class="btn btn-lg btn-info btn-block" href="register.php">수업등록</a>
+        <a class="btn btn-lg btn-info btn-block" href="class_register.php">수업등록</a>
     </div>
       
   </div>
@@ -204,6 +204,8 @@
   <div class="paging" align=center>
     <?php echo $paging ?>
   </div>
+
+  <?php include 'view/bottom_view.php'; ?>
 
 </body>
 </html>

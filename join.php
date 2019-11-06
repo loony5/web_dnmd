@@ -88,6 +88,8 @@
     </div>
   </div>
 
+  <?php include 'view/bottom_view.php'; ?>
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <!-- <script src="js/join.js?v=<%=System.currentTimeMills() %>"></script> -->
   <script src="js/join.js?ver=1"></script>

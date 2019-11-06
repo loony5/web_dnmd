@@ -43,7 +43,7 @@
 
 <body>
 
-    <?php include 'top_view.php'?>
+    <?php include 'view/top_view.php'?>
 
     <div class="container">
         <h2 class="text-center" style="margin-top:30px; margin-bottom:50px">관리페이지</h2>
@@ -117,6 +117,8 @@
     <div class="paging" align=center>
         <?php echo $paging ?>
     </div>
+
+    <?php include 'view/bottom_view.php'; ?>
 
 </body>
 

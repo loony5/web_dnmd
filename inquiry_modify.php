@@ -40,7 +40,7 @@
 
     <body>
 
-      <?php include 'top_view.php'?>
+      <?php include 'view/top_view.php'?>
 
       <div class="container" style="margin-bottom:100px">
       <h2 class="text-center" style="margin-top:30px; margin-bottom:50px">1:1 문의하기</h2>
@@ -89,6 +89,8 @@
 
       </div>
     </div>
+
+    <?php include 'view/bottom_view.php'; ?>
 
     </body>
   </html>

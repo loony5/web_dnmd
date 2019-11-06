@@ -1,5 +1,5 @@
 <?php
-  include '../dnmd/include/connect.php';
+  include 'include/connect.php';
 
   $title = $_POST['title'];
   $teacher = $_POST['teacher'];
@@ -27,40 +27,45 @@
 
   } else {
 
+      // 기존 이미지로 등록할 때,
       if($image == ''){
 
-        $f_sql = "select *from past where teacher = '$teacher'";
-        $f_result = $connect -> query($f_sql);
-        $f_row = $f_result -> fetch_assoc();
+        $sql = "SELECT *FROM past WHERE teacher = '$teacher'";
+        $row = mysqli_fetch_assoc($connect->query($sql));
 
-        $f_image = $f_row['image'];
+        $b_image = $row['image'];
 
-        $sql = "insert into class (no, title, teacher, date, time, place, peoples, charge, content, image)
-        values(null, '$title', '$teacher', '$date', '$time', '$place', '$peoples', '$charge', '$content', '$f_image')";
+        $sql = "INSERT INTO class (no, title, teacher, date, time, place, peoples, charge, content, image)
+        VALUES(null, '$title', '$teacher', '$date', '$time', '$place', '$peoples', '$charge', '$content', '$b_image')";
 
         $result = $connect->query($sql);
 
         if($result){
 
-          move_uploaded_file($_FILES['image']['tmp_name'], "images/$f_image");
+          move_uploaded_file($_FILES['image']['tmp_name'], "images/$b_image");
 
           ?>
           <script>
           alert("수업이 재등록되었습니다.");
-          location.href="../dnmd/admin.php";
+          location.href="admin.php";
           </script>
 
         <?php } else {
 
+
         ?>
         <script>
         alert("수업등록을 실패했습니다.");
-        location.href="../dnmd/main.php";
+        location.href="main.php";
         </script>
-      <?php }} else {
+      <?php }
+      
+    } else {
 
-        $sql = "insert into class (no, title, teacher, date, time, place, peoples, charge, content, image)
-        values(null, '$title', '$teacher', '$date', '$time', '$place', '$peoples', '$charge', '$content', '$image')";
+      // 새 이미지로 등록할 때,
+
+        $sql = "INSERT INTO class (no, title, teacher, date, time, place, peoples, charge, content, image)
+        VALUES(null, '$title', '$teacher', '$date', '$time', '$place', '$peoples', '$charge', '$content', '$image')";
 
         $result = $connect->query($sql);
 
@@ -71,7 +76,7 @@
           ?>
           <script>
           alert("수업이 재등록되었습니다.");
-          location.href="../dnmd/admin.php";
+          location.href="admin.php";
           </script>
 
         <?php } else {
@@ -79,7 +84,7 @@
         ?>
         <script>
         alert("수업등록을 실패했습니다.");
-        location.href="../dnmd/main.php";
+        location.href="main.php";
         </script>
       <?php }
 

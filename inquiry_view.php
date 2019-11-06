@@ -16,12 +16,30 @@
       <meta name="viewport" content="width=device-width", initial-scale="1">
       <title>D.NMD</title>
       <link rel="stylesheet" href="css/bootstrap.css">
+
+      <style>
+      body {
+        height: 100%;
+      }
+      .container {
+        position:relative;
+        min-height: 100%;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
+    
   </head>
 
   <body>
 
     <!-- 상단 네비게이션 바 -->
-    <?php include 'top_view.php'?>
+    <?php include 'view/top_view.php'?>
 
     <div class="container">
     <h2 class="text-center" style="margin-top:30px; margin-bottom:50px">1:1 문의하기</h2>
@@ -66,6 +84,8 @@
         </div>
       </div>
     </div>
+
+    <?php include 'view/bottom_view.php'; ?>
 
   </body>
 </html>

@@ -41,7 +41,7 @@
 
 <body>
     
-    <?php include 'top_view.php'?>
+    <?php include 'view/top_view.php'?>
 
     <div class="container">
         <h2 class="text-center" style="margin-top:30px; margin-bottom:50px">수강 신청</h2>   
@@ -122,6 +122,8 @@
         </div>
 
     </div>
+
+    <?php include 'view/bottom_view.php'; ?>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="js/payment.js"></script>

@@ -31,17 +31,17 @@
     <link rel="stylesheet" href="css/bootstrap.css">
 
     <style>
-        p {
+        body > p {
             font-size: 16px;
             line-height: 180%;
         }
 
-        ul {
+        body > ul {
             font-size: 16px;
             margin-top: 40px;
         }
 
-        li {
+        body > li {
             margin-bottom: 10px;
         }
 
@@ -50,7 +50,7 @@
 <body>
 
     <!-- 상단 네비게이션 바 -->
-    <?php include 'top_view.php';
+    <?php include 'view/top_view.php';
     
     // 마감된 수업일 때, 
     if(!isset($row)){ ?>
@@ -134,8 +134,10 @@
     <?php
      
     } 
+
+    include 'view/bottom_view.php';
     
     ?>
-    
+
 </body>
 </html>

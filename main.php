@@ -94,11 +94,10 @@
 
       padding: 0 0 0 15px;
     }
-
     </style>
 
     <!-- 상당 네비게이션 바 -->
-    <?php include 'top_view.php'?>
+    <?php include 'view/top_view.php'?>
 
 
     <div class="container">
@@ -157,12 +156,7 @@
   <?php echo $paging ?>
   </div>
 
-  <div class="container">
-    <div class="panel panel-body text-center">모든 컨텐츠의 저작권은
-      <a href="https://www.dnomade.com">디노마드(www.dnomade.com) </a>
-      & 소속 작가에 있습니다.
-    </div>
-  </div>
+  <?php include 'view/bottom_view.php'; ?>
 
   </body>
 

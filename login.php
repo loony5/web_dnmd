@@ -11,9 +11,19 @@
 
     <style>
       body {
-        padding-top: 60px;
-        padding-bottom: 60px;
         background-color: #eee;
+        height: 100%;
+      }
+      .container {
+        position:relative;
+        min-height: 100%;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
       }
     </style>
   </head>
@@ -65,5 +75,7 @@
 
   <?php } ?>
 
-  </body>
+  <?php include 'view/bottom_view.php'; ?>
+  
+</body>
 </html>
