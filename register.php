@@ -7,26 +7,28 @@
     ?>
     <script>
     alert("권한이 없습니다.");
-    location.replace("<?php echo "./main.php"?>");
+    location.replace("<?php echo "main.php"?>");
     </script>
     <?php
   } ?>
 
   <html>
     <head>
-      <meta charset="utf-8">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width", initial-scale="1">
       <title>D.NMD</title>
       <link rel="stylesheet" href="css/bootstrap.css">
-      <link rel="stylesheet" href="css/signin.css">
     </head>
 
     <body>
 
-      <div class="container">
-        <div class="row">
+      <?php include 'top_view.php'?>
 
-          <div class="col-lg-2">
-          </div>
+      <div class="container" style="margin-bottom:100px">
+        <h2 class="text-center" style="margin-top:30px; margin-bottom:50px">수업 등록</h2>
+        
+        <div class="row">
+          <div class="col-lg-2"></div>
 
           <div class="col-lg-7 text-center" style="margin-left:5px">
             <form class="form-horizontal" action="register_update.php" method="post" enctype="multipart/form-data">
@@ -91,7 +93,7 @@
 
               <div class="form-group">
                 <label for="image" class="col-lg-2 control-label">이미지</label>
-                <div class="col-lg-10">
+                <div class="col-lg-10" style="margin-top:7px">
                   <input id="image" type="file" name="image"">
                 </div>
               </div>

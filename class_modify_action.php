@@ -1,10 +1,10 @@
 <?php
 
   session_start();
-  include "../dnmd/include/connect.php";
+  include "include/connect.php";
 
   // 관리자 로그인이 아닐 경우 경고창
-  if($_SESSION['ses_userid'] != 'admin') {
+  if(!isset($_SESSION['ses_userid']) || $_SESSION['ses_userid'] != 'admin') {
 
     ?>
 
@@ -56,7 +56,7 @@
 
         <script>
         alert("수업이 수정되었습니다.");
-        location.replace("<?php echo '../dnmd/admin.php'?>");
+        location.replace("<?php echo 'admin.php'?>");
         </script>
 
       <?php } else {
@@ -85,7 +85,7 @@
 
         <script>
         alert("수업이 수정되었습니다.");
-        location.replace("<?php echo "../dnmd/admin.php"?>");
+        location.replace("<?php echo "admin.php"?>");
         </script>
       <?php } else {
 

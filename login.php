@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <?php
     session_start();
-    include "../dnmd/include/connect.php"; ?>
+    include "include/connect.php"; ?>
 <html>
   <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width", initial-scale="1">
     <title>D.NMD</title>
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/signin.css">
 
     <style>
       body {
         padding-top: 60px;
         padding-bottom: 60px;
+        background-color: #eee;
       }
     </style>
   </head>
@@ -23,14 +23,14 @@
   <!-- 세션에 아이디가 없을 때, -->
   <?php if(!isset($_SESSION['ses_userid'])) { ?>
     <div class="container">
+    <h2 class="text-center" style="margin-top:50px; margin-bottom:50px">D.NMD</h2>
 
-      <form class="form-signin" method="post" action="login_success.php">
-        <h2 class="form-signin-heading">D.NMD</h2>
-
-        <input type="text" name="memberId" class="form-control" placeholder="아이디" required autofocus
+    <div class="col-md-4 col-md-offset-4">
+      <form method="post" action="login_success.php">
+        <input type="text" name="memberId" class="form-control input-lg" placeholder="아이디" required autofocus
         value="<?php if(isset($_COOKIE['member_login'])) { echo $_COOKIE['member_login']; } ?>">
         
-        <input type="password" name="memberPw" class="form-control" placeholder="비밀번호" required>
+        <input type="password" name="memberPw" class="form-control input-lg" placeholder="비밀번호" required>
         
         <div class="checkbox">
           <label>
@@ -42,6 +42,7 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
         <button class="btn btn-lg btn-info btn-block" type="button" onclick="location.href='join.php'">회원가입</button>
       </form>
+    </div>
 
     </div>
 

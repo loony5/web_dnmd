@@ -25,8 +25,8 @@
 
     <?php } else {
 
-      $sql = "insert into class (no, title, teacher, date, time, place, peoples, charge, content, image)
-      values(null, '$title', '$teacher', '$date', '$time', '$place', '$peoples', '$charge', '$content', '$image')";
+      $sql = "INSERT INTO class (no, title, teacher, date, time, place, peoples, charge, content, image)
+      VALUES(null, '$title', '$teacher', '$date', '$time', '$place', '$peoples', '$charge', '$content', '$image')";
 
       $result = $connect->query($sql);
 
@@ -37,7 +37,7 @@
         ?>
         <script>
         alert("수업이 등록되었습니다.");
-        location.href="../dnmd/admin.php";
+        location.href="admin.php";
         </script>
 
       <?php } else {
@@ -45,7 +45,7 @@
       ?>
       <script>
       alert("수업등록을 실패했습니다.");
-      location.href="../dnmd/main.php";
+      location.href="main.php";
       </script>
     <?php }}
 

@@ -2,7 +2,6 @@
   include "../dnmd/include/connect.php";
 
   $no = $_POST['no'];
-
   $title = $_POST['title'];
   $content = $_POST['content'];
 
@@ -17,7 +16,7 @@
 
   <?php } else {
 
-  $sql = "update board set title='$title', content='$content' where no = '$no'";
+  $sql = "UPDATE board SET title='$title', content='$content' where no = '$no'";
 
   $result = $connect->query($sql);
 
@@ -27,7 +26,7 @@
 
   <script>
     alert("<?php echo "글이 수정되었습니다."?>");
-    location.replace("<?php echo '../dnmd/my_inquiry.php'?>");
+    location.replace("<?php echo 'my_inquiry.php'?>");
   </script>
 
   <?php

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include "../dnmd/include/connect.php";
+    include "include/connect.php";
     // ini_set('display_errors', true);
 
     $memberId = $_POST['memberId'];

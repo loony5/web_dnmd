@@ -4,7 +4,7 @@
     include "../dnmd/include/connect.php";
 
     // 관리자 아이디로 로그인이 아닐경우 경고창
-    if($_SESSION['ses_userid'] != 'admin') {
+    if(!isset($_SESSION['ses_userid']) || $_SESSION['ses_userid'] != 'admin') {
 
         ?>
         <script>

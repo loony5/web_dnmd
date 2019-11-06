@@ -3,7 +3,7 @@
   session_start();
   include "../dnmd/include/connect.php";
 
-  if($_SESSION['ses_userid'] != 'admin'){
+  if(!isset($_SESSION['ses_userid']) || $_SESSION['ses_userid'] != 'admin'){
 
     ?>
     
