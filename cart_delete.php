@@ -20,6 +20,6 @@
     ?>
     <script>
     alert("권한이 없습니다.");
-    location.replace("<?php echo "main.php"?>");
+    location.replace("<?php echo "index.php"?>");
     </script>
   <?php } ?>

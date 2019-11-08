@@ -13,7 +13,7 @@
     ?>
     <script>
     alert("권한이 없습니다.");
-    location.replace("<?php echo "main.php"?>");
+    location.replace("<?php echo "index.php"?>");
     </script>
     <?php
   } ?>
@@ -128,5 +128,8 @@
       <?php include 'view/bottom_view.php'; ?>
 
     </body>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
 
   </html>

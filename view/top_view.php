@@ -5,7 +5,7 @@
       
       <!-- 모바일 사이즈로 브라우저 너비가 좁아질 경우, 메뉴로 보여짐 -->
       <div class="navbar-header">
-        <a class="navbar-brand" href="main.php">D.NMD</a>
+        <a class="navbar-brand" href="index.php">D.NMD</a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only"></span>
           <span class="icon-bar"></span>
@@ -21,7 +21,7 @@
           <!-- 로그인하지 않았을때, -->
           <?php
             if(!isset($_SESSION['ses_userid'])) { ?>
-              <li><a href="login.php">로그인</a></li>
+              <li><a href="/login.php">로그인</a></li>
               <li><a href="join.php">회원가입</a></li>
               <li><a href="inquiry_write.php">1:1문의하기</a></li>
 

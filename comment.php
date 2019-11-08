@@ -77,7 +77,7 @@
 					</div>
 				</div>
 				<div class="text-right" style="margin-bottom:30px">
-					<input type="submit" class="btn btn-info" value="수정 완료">
+					<input type="submit" class="btn btn-info" value="답변 완료"">
 				</div>
 
 			</form>

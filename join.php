@@ -63,7 +63,7 @@
 
           <div class="form-group">
             <label for="memberEmail">이메일</label>
-            <input id="memberEmail" class="form-control input-lg" type="text" name="memberEmail" placeholder="Email">
+            <input id="memberEmail" class="form-control input-lg" type="text" name="memberEmail" placeholder="ex) dnmd@email.com">
           </div>
 
           <div id="emailError" class="form-group warning">
@@ -71,8 +71,8 @@
           </div>
 
           <div class="form-group">
-            <label for="memberPhone">휴대폰 번호</label>
-            <input id="memberPhone" class="form-control input-lg" type="text" name="memberPhone" placeholder="Phone Number">
+            <label for="memberPhone">휴대폰 번호(하이픈'-'포함 입력)</label>
+            <input id="memberPhone" class="form-control input-lg" type="text" name="memberPhone" placeholder="ex) 000-0000-0000">
           </div>
 
           <div id="phoneError" class="form-group warning">
@@ -93,6 +93,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <!-- <script src="js/join.js?v=<%=System.currentTimeMills() %>"></script> -->
   <script src="js/join.js?ver=1"></script>
+  <script src="js/bootstrap.js"></script>
 
 </body>
 </html>

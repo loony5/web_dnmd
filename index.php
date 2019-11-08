@@ -63,7 +63,7 @@
 
     } else {
 
-      $paging .= '<li><a href="main.php?page=' . $i . '">' . $i . '</a></li>';
+      $paging .= '<li><a href="index.php?page=' . $i . '">' . $i . '</a></li>';
 
     }
 
@@ -159,5 +159,8 @@
   <?php include 'view/bottom_view.php'; ?>
 
   </body>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
 
 </html>

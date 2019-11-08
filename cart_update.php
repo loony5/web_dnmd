@@ -2,6 +2,16 @@
   include 'include/connect.php';
   session_start();
 
+  if(!isset($_SESSION['ses_userid'])){
+
+    ?>
+    <script>
+     alert("로그인이 필요합니다.");
+     location.replace("<?php echo "login.php"?>");
+   </script>
+   <?php
+ }
+
   $no = $_GET['no'];
   $sql = "SELECT * FROM class WHERE no = $no";
   $row=mysqli_fetch_assoc($connect->query($sql));

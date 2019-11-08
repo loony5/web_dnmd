@@ -117,7 +117,7 @@
     <div class="col-md-4"></div>
 
     <div class="col-md-4" style="margin-top:20px; margin-bottom:20px">
-        <button class="btn btn-lg btn-info btn-block" type="button" onclick="location.href='main.php'">계속 둘러보기</button>
+        <button class="btn btn-lg btn-info btn-block" type="button" onclick="location.href='index.php'">계속 둘러보기</button>
     </div>
 
   </div>
@@ -125,5 +125,8 @@
   <?php include 'view/bottom_view.php'; ?>
 
 </body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
 
 </html>

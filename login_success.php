@@ -47,19 +47,19 @@
 
       setcookie("member_login", $_POST['memberId'], time()+(10 * 355 * 24 * 60 * 60));
       $_SESSION['ses_userid'] = $row['memberId']; ?>
-      <meta http-equiv="refresh" content="0;url=main.php"/>
+      <meta http-equiv="refresh" content="0;url=index.php"/>
 
     <?php } else {
 
       setcookie("member_login", "");
       $_SESSION['ses_userid'] = $row['memberId']; ?>
-      <meta http-equiv="refresh" content="0;url=main.php"/>
+      <meta http-equiv="refresh" content="0;url=index.php"/>
 
     <?php } } } } else {
 
       $ses_userid=$_SESSION['ses_userid'];
       echo "<p><strong>$ses_userid</strong> 님은 이미 로그인하고 있습니다.";
-      echo "<a href=\"main.php\">[돌아가기]</a>";
+      echo "<a href=\"index.php\">[돌아가기]</a>";
       echo "<a href=\"logout.php\">[로그아웃]</a></p>";
 
     }?>

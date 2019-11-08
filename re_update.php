@@ -56,7 +56,7 @@
         ?>
         <script>
         alert("수업등록을 실패했습니다.");
-        location.href="main.php";
+        location.href="index.php";
         </script>
       <?php }
       
@@ -84,7 +84,7 @@
         ?>
         <script>
         alert("수업등록을 실패했습니다.");
-        location.href="main.php";
+        location.href="index.php";
         </script>
       <?php }
 

@@ -67,7 +67,7 @@
       <h2 class="form-signin-heading text-center"><?php echo "$ses_userid"; ?> 님은 이미 로그인되어 있습니다.</h2>
 
       <form class="form-signin">
-        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="location.href='main.php'">돌아가기</button>
+        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="location.href='index.php'">돌아가기</button>
         <button class="btn btn-lg btn-info btn-block" type="button" onclick="location.href='logout.php'">로그아웃</button>
       </form>
     </div>

@@ -10,7 +10,7 @@
 
      <script>
       alert("권한이 없습니다.");
-      location.replace("<?php echo "./main.php"?>");
+      location.replace("<?php echo "index.php"?>");
     </script>
 
     <?php
@@ -85,11 +85,6 @@
 
                      while($row = $result->fetch_assoc()) {
 
-                        $classNo = $row['no'];
-                        $query = "SELECT count(*) as cnt FROM payment_list WHERE num = '$classNo'";
-                        $pay_row=mysqli_fetch_assoc($connect->query($query));
-
-                        $remainder = $row['peoples'] - $pay_row['cnt'];
                     ?>
                     <tr>
                         <td style="text-align: center"><?php echo $row['no']?></td>
@@ -121,5 +116,8 @@
     <?php include 'view/bottom_view.php'; ?>
 
 </body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
 
 </html>
