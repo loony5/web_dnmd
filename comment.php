@@ -11,7 +11,7 @@
 		<input type="hidden" name="no" value="<?php echo $no?>">
 		<input type="hidden" name="coId" value="admin">
 
-		<div class="panel panel-info">
+		<div class="panel panel-info" style="margin-top:40px">
 			<div class="panel-heading text-center">답변 완료</div>
 
 			<div class="panel-body">

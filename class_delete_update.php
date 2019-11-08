@@ -31,7 +31,7 @@
       ?>
       <script>
         alert("<?php echo "수업이 삭제되었습니다."?>");
-        location.replace("<?php echo "../dnmd/admin.php"?>");
+        location.replace("<?php echo "admin.php"?>");
       </script>
 
     <?php } else {

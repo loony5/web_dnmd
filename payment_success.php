@@ -56,10 +56,15 @@
                 $sql = "DELETE FROM class WHERE no = '$class_no'";
                 $connect->query($sql);
 
-                echo ("<script>location.href='receipt.php';</script>");
-
             }
 
+            ?>
+
+            <script>
+            location.href="receipt.php";
+            </script>
+
+            <?php
         }
 
     } else {
@@ -113,10 +118,13 @@
                 $sql = "DELETE FROM class WHERE no = '$class_no'";
                 $connect->query($sql);
 
-                echo ("<script>location.href='receipt.php';</script>");
-
             }
+            ?>
 
+            <script>
+            location.href="receipt.php";
+            </script>
+            <?php
         }
 
     }

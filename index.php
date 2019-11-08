@@ -94,6 +94,19 @@
 
       padding: 0 0 0 15px;
     }
+
+    h4 {
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1; /* 라인수 */
+      -webkit-box-orient: vertical;
+      word-wrap:break-word; 
+      line-height: 1.6em;
+      height: 1.6em; /* line-height 가 1.6em 이고 2라인을 자르기 때문에 height는 1.6em * 2 = 3.2em */
+
+    }
     </style>
 
     <!-- 상당 네비게이션 바 -->
@@ -138,9 +151,9 @@
           <a href="class_detail.php?no=<?php echo $row['no'] ?>" class="thumbnail">
             <img src="images/<?=$row['image']?>" alt="">
             <div class="caption">
-              <h3>
-                <?php if($remainder<=2 && $remainder !=0) { echo $row['title']; ?>
-                <span style="color:red">-마감임박</span><?php } else { echo $row['title']; } ?></h3>
+              <h4>
+                <?php if($remainder<=2 && $remainder !=0) { ?>
+                <span style="color:red">[마감임박] </span><?php echo $row['title']; } else { echo $row['title']; } ?></h4>
             </div>
           </a>
         </div>

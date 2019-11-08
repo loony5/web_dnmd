@@ -20,6 +20,10 @@
         $cnt = mysqli_fetch_assoc($connect -> query($sql));
 
     }
+
+    $sql = "SELECT count(*) as cnt FROM payment_list WHERE num = '$no'";
+    $cnt_row = mysqli_fetch_assoc($connect->query($sql));
+
     
 ?>
 
@@ -56,7 +60,7 @@
     if(!isset($row)){ ?>
 
     <div class="container">
-        <h2 class="text-center" style="margin-top:30px; margin-bottom:50px"><?=$past_row['title']?> - 마감</h2>
+        <h2 class="text-center" style="margin-top:30px; margin-bottom:50px"><span style="color:red">[마감] </span><?=$past_row['title']?></h2>
         <h4 class="text-center" style="margin-bottom:50px">강사 : <?=$past_row['teacher']?></h4>
 
         <div class="row">
@@ -84,7 +88,7 @@
 
         <div class="col-md-4"></div>
         <div class="col-md-4" style="margin-top:20px; margin-bottom:20px">
-            <button class="btn btn-lg btn-info btn-block" type="button" onclick="location.href='receipt.php'?>'">돌아가기</button>
+            <button class="btn btn-lg btn-info btn-block" type="button" onclick="location.href='receipt.php'">돌아가기</button>
         </div>
 
     </div>
@@ -94,7 +98,8 @@
     } else { ?>
 
         <div class="container">
-            <h2 class="text-center" style="margin-top:30px; margin-bottom:50px"><?=$row['title']?></h2>
+            <h2 class="text-center" style="margin-top:30px; margin-bottom:50px"><?php if(($row['peoples']-$cnt_row['cnt']) <= 2) { ?>
+                <span style="color:red">[마감임박] </span><?=$row['title']; } else {echo $row['title']; } ?></h2>
             <h4 class="text-center" style="margin-bottom:50px">강사 : <?=$row['teacher']?></h4>
 
             <div class="row">

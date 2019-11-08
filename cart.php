@@ -94,8 +94,8 @@
           <tr>
             <td><img class="img-rounded" width="50px" src="images/<?php echo $row['image']?>">
               <a href = "class_detail.php?no=<?php echo $row['num']?>">
-              <?php if($remainder<=2 && $remainder!=0){ echo $row['title']; ?>
-              <span style="color:red">-마감임박</span> <?php } else { 
+              <?php if($remainder<=2 && $remainder!=0){ ?> <span style="color:red">[마감임박] </span> <?=$row['title'];
+               } else if ($remainder == 0) { ?> <span style="color:red">[마감] </span> <?=$row['title']; } else { 
                 echo $row['title'];} ?>
             </td>
             <td style="text-align: center"><p><?php echo $row['date']?></p></td>

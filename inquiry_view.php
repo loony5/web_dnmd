@@ -26,12 +26,12 @@
         min-height: 100%;
       }
 
-      footer {
+      /* footer {
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
-      }
+      } */
     </style>
     
   </head>
@@ -78,14 +78,14 @@
             </div>
 
             <?php
-            } else { include 'comment.php';}
+            } include 'comment.php';
           ?>
         </div>
         </div>
       </div>
     </div>
 
-    <?php include 'view/bottom_view.php'; ?>
+
 
   </body>
 
